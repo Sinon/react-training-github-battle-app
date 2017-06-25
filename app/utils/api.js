@@ -23,7 +23,7 @@ function calculateScore (profile, repos) {
   return (followers * 3) + totalStars
 }
 
-function handleError(error) {
+function handleError (error) {
   console.warn(error)
   return null
 }
@@ -43,7 +43,7 @@ function getUserData (player) {
   })
 }
 
-function sortPlayers(players) {
+function sortPlayers (players) {
   return players.sort((a, b) => {
     return b.score - a.score
   })
@@ -56,7 +56,7 @@ module.exports = {
       .catch(handleError)
   },
   fetchPopularRepos: function (language) {
-    var encodedURI = window.encodeURI('https://api.github.com/search/repositories?q=stars:>1+language:'+ language + '&sort=stars&order=desc&type=Repositories');
+    var encodedURI = window.encodeURI('https://api.github.com/search/repositories?q=stars:>1+language:' + language + '&sort=stars&order=desc&type=Repositories')
     return axios.get(encodedURI)
       .then(function (response) {
         return response.data.items
