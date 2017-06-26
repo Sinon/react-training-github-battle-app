@@ -1,14 +1,13 @@
-var path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
-
+var path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')  // installed via npm
 
 module.exports = {
-    entry: './app/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'index.bundle.js',
-        publicPath: '/'
-    },
+  entry: './app/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.bundle.js',
+    publicPath: '/'
+  },
   module: {
     rules: [
       {test: /\.js$/, use: 'babel-loader'},

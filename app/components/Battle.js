@@ -85,12 +85,18 @@ class Battle extends React.Component {
     return (
       <div>
         <div className='row'>
-          {!playerOneName && <PlayerInput id='playerOne' label='Player One' onSubmit={this.handleSubmit} />}
-          {playerOneImage != null && <PlayerPreview id='playerOne'
-            avatar={playerOneImage} username={playerOneName} onReset={this.handleReset} />}
-          {!playerTwoName && <PlayerInput id='playerTwo' label='Player Two' onSubmit={this.handleSubmit} />}
-          {playerTwoImage != null && <PlayerPreview id='playerTwo'
-            avatar={playerTwoImage} username={playerTwoName} onReset={this.handleReset} />}
+          {!playerOneName &&
+            <PlayerInput id='playerOne' label='Player One' onSubmit={this.handleSubmit} />}
+          {playerOneImage != null &&
+            <PlayerPreview avatar={playerOneImage} username={playerOneName}>
+              <button className='reset' onClick={this.handleReset.bind(null, 'playerOne')}>Reset</button>
+            </PlayerPreview>}
+          {!playerTwoName &&
+            <PlayerInput id='playerTwo' label='Player Two' onSubmit={this.handleSubmit} />}
+          {playerTwoImage != null &&
+            <PlayerPreview avatar={playerTwoImage} username={playerTwoName}>
+              <button className='reset' onClick={this.handleReset.bind(null, 'playerTwo')}>Reset</button>
+            </PlayerPreview>}
         </div>
         {playerOneImage && playerTwoImage &&
           <Link className='button'
