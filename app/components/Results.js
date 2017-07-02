@@ -25,6 +25,7 @@ const Profile = ({info}) => (
 Profile.propTypes = {
   info: PropTypes.object.isRequired
 }
+
 const Player = ({ label, score, profile }) => (
   (
     <div>

@@ -9,8 +9,6 @@ class PlayerInput extends React.Component {
     this.state = {
       'username': ''
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
   render () {
     return (
@@ -22,14 +20,14 @@ class PlayerInput extends React.Component {
       </form>
     )
   }
-  handleSubmit (event) {
+  handleSubmit = (event) => {
     event.preventDefault()
     this.props.onSubmit(
       this.props.id,
       this.state.username
     )
   }
-  handleChange (event) {
+  handleChange = (event) => {
     let value = event.target.value
     this.setState(() => {
       let newState = {'username': value}
@@ -53,11 +51,9 @@ class Battle extends React.Component {
       playerTwoName: '',
       playerTwoImage: null
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleReset = this.handleReset.bind(this)
   }
 
-  handleSubmit (id, username) {
+  handleSubmit = (id, username) => {
     this.setState(() => {
       let newState = {}
       newState[id + 'Name'] = username
@@ -66,7 +62,7 @@ class Battle extends React.Component {
     })
   }
 
-  handleReset (id) {
+  handleReset = (id) => {
     this.setState(() => {
       let newState = {}
       newState[id + 'Name'] = ''
