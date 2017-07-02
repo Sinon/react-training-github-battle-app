@@ -6,9 +6,8 @@ var api = require('../utils/api')
 var PlayerPreview = require('./PlayerPreview')
 var Loading = require('./Loading')
 
-function Profile (props) {
-  let info = props.info
-  return (
+const Profile = ({info}) => (
+  (
     <PlayerPreview avatar={info.avatar_url} username={info.login}>
       <ul className='space-list-items'>
         {info.name && <li>{info.name}</li>}
@@ -21,21 +20,20 @@ function Profile (props) {
       </ul>
     </PlayerPreview>
   )
-}
+)
 
 Profile.propTypes = {
   info: PropTypes.object.isRequired
 }
-
-function Player (props) {
-  return (
+const Player = ({ label, score, profile }) => (
+  (
     <div>
-      <h1 className='header'>{props.label}</h1>
-      <h3 style={{textAlign: 'center'}}>Score: {props.score}</h3>
-      <Profile info={props.profile} />
+      <h1 className='header'>{label}</h1>
+      <h3 style={{textAlign: 'center'}}>Score: {score}</h3>
+      <Profile info={profile} />
     </div>
   )
-}
+)
 
 Player.propTypes = {
   profile: PropTypes.object.isRequired,
@@ -98,8 +96,8 @@ class Results extends React.Component {
 
     return (
       <div className='row'>
-        <Player label='Winner' score={winner.score} profile={winner.profile} />
-        <Player label='Loser' score={loser.score} profile={loser.profile} />
+        <Player label='Winner' {... winner} />
+        <Player label='Loser' {... loser} />
       </div>
     )
   }
