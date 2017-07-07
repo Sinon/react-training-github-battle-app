@@ -15,11 +15,11 @@
   "babel": {
     "presets": [
       "env",
-      "react",
-      "es2015"
+      "react"
     ],
     "plugins": [
-      "transform-class-properties"
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   },
   "standard": {
@@ -33,6 +33,7 @@
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
@@ -52,6 +53,7 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
-    "redux": "^3.7.1"
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0"
   }
 }

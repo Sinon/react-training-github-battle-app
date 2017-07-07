@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 
-const languageFilter = (state = 'Default', action) => {
+const languageFilter = (state = 'All', action) => {
+  console.log(state, action)
   switch (action.type) {
     case 'SET_LANGUAGE_FILTER':
       return action.filter
@@ -23,19 +24,13 @@ const players = (state = {}, action) => {
   }
 }
 
-// TODO Fix
 const repos = (state = [], action) => {
+  console.log('reducer repo')
+  console.log(state)
+  console.log(action)
   switch (action.type) {
-    case 'ADD_REPO':
-      return [
-        ...state,
-        {
-          id: action.id,
-          username: action.username
-        }
-      ]
-    case 'REMOVE_REPO':
-      return state.filter(item => action.name !== item.name)
+    case 'GET_REPOS_DATA_RECEIVED':
+      return action
     default:
       return state
   }

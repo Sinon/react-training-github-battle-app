@@ -1,17 +1,18 @@
+var api = require('./utils/api')
+
 const SET_LANGUAGE_FILTER = 'SET_LANGUAGE_FILTER'
 const ADD_PLAYER = 'ADD_PLAYER'
 const REMOVE_PLAYER = 'REMOVE_PLAYER'
-const ADD_REPO = 'ADD_REPO'
-const REMOVE_REPO = 'REMOVE_REPO'
+const UPDATE_REPOS = 'UPDATE_REPOS'
 
-function setLanguageFilter(lang) {
+export const setLanguageFilter = lang => {
   return {
     type: SET_LANGUAGE_FILTER,
     filter: lang
   }
 }
 
-function addPlayer(playerNum, name, image) {
+export const addPlayer = (playerNum, name, image) => {
   return {
     type: ADD_PLAYER,
     num: playerNum,
@@ -20,23 +21,29 @@ function addPlayer(playerNum, name, image) {
   }
 }
 
-function removePlayer(playerNum) {
+export const removePlayer = (playerNum) => {
   return {
     type: REMOVE_PLAYER,
     num: playerNum
   }
 }
 
-// TODO Fix
-function addRepo() {
+export const updateRepos = (repos) => {
+  console.log('update repos')
+  console.log(repos)
   return {
-    type: ADD_REPO
+    type: UPDATE_REPOS,
+    repos: repos
   }
 }
 
-// TODO Fix
-function removeRepo() {
-  return {
-    type: REMOVE_REPO
+export const updateReposAsync = (lang) => {
+  console.log('update repos async')
+  console.log(lang)
+  return dispatch => {
+    api.fetchPopularRepos(lang)
+      .then(response => {
+        return response
+      })
   }
 }
